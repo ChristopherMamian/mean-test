@@ -1,4 +1,7 @@
 {
-  "name": "http-server",
+  "name": "mean-app",
   "main": "server.js",
+  "dependencies": {
+  	"express": "~4.8.6"
+  }
 }
