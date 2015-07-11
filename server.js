@@ -20,6 +20,11 @@ adminRouter.get('/posts', function(req, res) {
 	res.send('I show all the posts');
 });
 
+adminRouter.use(function(req, res, next) {
+	console.log(req.method, req.url);
+	next();
+});
+
 app.use('/admin', adminRouter);
 
 app.listen(1337);
