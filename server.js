@@ -8,6 +8,23 @@ app.get('/', function(req, res) {
 
 var adminRouter = express.Router();
 
+adminRouter.use(function(req, res, next) {
+	console.log(req.method, req.url);
+	next();
+});
+
+adminRouter.param('name', function(req, res, next, name) {
+	console.log('doing name validations on ' + name);
+
+	req.name = name;
+
+	next();
+});
+
+adminRouter.get('/hello/:name', function(req, res) {
+	res.send('hello ' + req.name + '!');
+});
+
 adminRouter.get('/', function(req, res) {
 	res.send('I am the dashboard');
 });
@@ -20,10 +37,10 @@ adminRouter.get('/posts', function(req, res) {
 	res.send('I show all the posts');
 });
 
-adminRouter.use(function(req, res, next) {
-	console.log(req.method, req.url);
-	next();
+adminRouter.get('/users/:name', function(req, res) {
+	res.send('hello ' + req.params.name + '!');
 });
+
 
 app.use('/admin', adminRouter);
 
