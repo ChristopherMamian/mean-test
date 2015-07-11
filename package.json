@@ -1,4 +1,4 @@
 {
-  "name": "mean-app",
+  "name": "http-server",
   "main": "server.js",
 }
