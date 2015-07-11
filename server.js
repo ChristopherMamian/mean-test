@@ -1,16 +1,10 @@
-var http = require('http'),
-	fs = require('fs');
+var express = require('express');
+var app = express();
+var path = require('path');
 
-http.createServer(function(req, res){
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname + '/index.html'));
+});
 
-	res.writeHead(200, {
-		'Content-Type': 'text/html',
-		'Access-Control-Allow-Origin' : '*'
-	});
-
-	var readStream = fs.createReadStream(__dirname + '/index.html');
-
-	readStream.pipe(res);
-}).listen(1337);
-
-console.log('Visit me at http://localhost:1337');
+app.listen(1337);
+console.log('Big Brother is listening!');
