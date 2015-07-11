@@ -6,6 +6,17 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.route('/login')
+
+	.get(function(req, res) {
+		res.send('this is the login form');
+	})
+
+	.post(function(req, res) {
+		console.log('processing');
+		res.send('processing the login form');
+	});
+
 var adminRouter = express.Router();
 
 adminRouter.use(function(req, res, next) {
